@@ -20,4 +20,17 @@ num1 和 num2 均不以零开头，除非是数字 0 本身。
 
 class Solution:
     def multiply(self, num1: str, num2: str) -> str:
-        pass
+        if num1 == '0' or num2 == '0':
+            return '0'
+        l1 = len(num1)
+        l2 = len(num2)
+        if l1 >= 110 or l2 >= 110:
+            raise Exception
+        num1_int = 0
+        num2_int = 0
+        # 通过unicode得到int值
+        for i in range(l1):
+            num1_int += 10 ** (l1 - 1 - i) * (ord(num1[i]) - ord('0'))
+        for i in range(l2):
+            num2_int += 10 ** (l2 - 1 - i) * (ord(num2[i]) - ord('0'))
+        return str(num1_int * num2_int)
