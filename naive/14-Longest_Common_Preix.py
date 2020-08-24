@@ -27,9 +27,9 @@ class Solution:
             return ''
         if len(strs) == 1:
             return strs[0]
-        i = 1
+        i = 0
         for z in zip(*strs):
-            i += 1
             if len(set(z)) > 1:
                 break
+            i += 1
         return strs[0][:i]
