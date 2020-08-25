@@ -1,4 +1,4 @@
-'''
+"""
 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
 
 比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
@@ -25,7 +25,7 @@ L     D     R
 E   O E   I I
 E C   I H   N
 T     S     G
-'''
+"""
 
 
 def convert(self, s: 'str', numRows: 'int') -> 'str':
