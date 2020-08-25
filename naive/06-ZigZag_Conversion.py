@@ -33,6 +33,8 @@ class Solution:
         if len(s) <= numRows or numRows < 2:
             return s
         r = [""] * numRows
+        # i 为对应的行索引，flag 为行索引变化的方向
+        # https://leetcode-cn.com/problems/zigzag-conversion/solution/zzi-xing-bian-huan-by-jyd/
         i, flag = 0, -1
         for ch in s:
             # 走到头了，调头
