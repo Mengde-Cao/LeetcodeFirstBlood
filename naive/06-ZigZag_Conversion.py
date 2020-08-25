@@ -28,38 +28,16 @@ T     S     G
 """
 
 
-def convert(self, s: 'str', numRows: 'int') -> 'str':
-    if len(s) <= numRows or numRows < 2:
-        return s
-    r = []
-    i = 0
-    while i < len(s):
-        if i == 0 or i % (2 * numRows - 2) == 0:  # 从上往下
-            t = ['-'] * numRows
-            for p in range(numRows):
-                t[p] = s[i]
-                i += 1
-                if i >= len(s):
-                    break
-            r.append(t)
-            # print(t)
-        else:  # 从下往上
-            m = ['-'] * numRows
-            for p in range(1, numRows - 1):
-                m[numRows - p - 1] = s[i]
-                i += 1
-                if i >= len(s):
-                    break
-            r.append(m)
-            # print(m)
-    result = ''
-    # rr 为二阶矩阵，转置后为Z形
-    for ii in range(numRows):
-        for rr in r:
-            result += rr[ii]
-    return result.replace('-', '')
-
-
-if __name__ == '__main__':
-    r = convert("ABCDEF", 4)
-    print(r)
+class Solution:
+    def convert(self, s: 'str', numRows: 'int') -> 'str':
+        if len(s) <= numRows or numRows < 2:
+            return s
+        r = [""] * numRows
+        i, flag = 0, -1
+        for ch in s:
+            # 走到头了，调头
+            if i == 0 or i == numRows - 1:
+                flag = -flag
+            r[i] += ch
+            i += flag
+        return "".join(r)
