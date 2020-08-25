@@ -14,11 +14,13 @@
 
 def twoSum(nums: 'List[int]', target: 'int') -> 'List[int]':
     s = dict()
+    r = []
     for i in range(len(nums)):
-        complement = target - nums[i]
-        if complement in s:
-            r = [i, s[complement]]
-            r.sort()
-            return r
+        c = target - nums[i]
+        if c in s:
+            r.append(i)
+            r.append(s[c])
+            break
         s[nums[i]] = i
-    return None
+    r.sort()
+    return r
