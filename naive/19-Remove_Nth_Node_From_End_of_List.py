@@ -29,9 +29,11 @@ def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
     result = cur
     i = 0
     while head:
+        # cur 移动 L - n 次
         if i >= n:
             cur = cur.next
         head = head.next
         i += 1
+    # 此时 cur 位于倒数第 n - 1 个节点
     cur.next = cur.next.next
     return result.next
