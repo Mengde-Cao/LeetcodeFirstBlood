@@ -24,17 +24,14 @@ class ListNode:
 
 
 def removeNthFromEnd(head: ListNode, n: int) -> ListNode:
-    res = ListNode(0)
-    # 双指针，head 和 tmp
-    res.next = head
-    tmp = res
-    # head先走到第n+1个
-    for _ in range(n):
-        head = head.next
-    # tmp走到第L-n个，即倒数第n个
+    cur = ListNode(None)
+    cur.next = head
+    result = cur
+    i = 0
     while head:
+        if i >= n:
+            cur = cur.next
         head = head.next
-        tmp = tmp.next
-    # 跳过倒数第n个节点
-    tmp.next = tmp.next.next
-    return res.next
+        i += 1
+    cur.next = cur.next.next
+    return result.next
